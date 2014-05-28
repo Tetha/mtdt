@@ -10,7 +10,7 @@ public class PropTest {
     private static int MAX_TRIES = 100;
     
     public static <T> void checkProperty( InputGenerator<T> exampleGenerator, Predicate<T> property ) {
-        for ( int i = 0; i < 100; i++ ) {
+        for ( int i = 0; i < MAX_TRIES; i++ ) {
             T randomInput = exampleGenerator.generateRandomInput( r );
             
             boolean propertyHolds;
@@ -22,4 +22,6 @@ public class PropTest {
             if ( !propertyHolds ) throw new PropertyViolatedException( randomInput );
         }
     }
+    
+    public static final InputGenerator<Integer> INTEGERS = r -> r.nextInt();
 }
