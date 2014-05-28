@@ -9,4 +9,10 @@ public class GeneratorFilteringTest {
         PropTest.checkProperty(PropTest.INTEGERS.butOnly( i -> i % 2 == 0), 
                                i -> i % 2 == 0);
     }
+    
+    @Test( timeout = 200, expected = FilterTooStrictException.class )
+    public void testTooStrictFiltering() {
+        PropTest.checkProperty(PropTest.INTEGERS.butOnly( i -> i == Integer.MAX_VALUE-1),
+                               i -> true);
+    }
 }
