@@ -12,7 +12,13 @@ public class PropTest {
     public static <T> void checkProperty( InputGenerator<T> exampleGenerator, Predicate<T> property ) {
         for ( int i = 0; i < 100; i++ ) {
             T randomInput = exampleGenerator.generateRandomInput( r );
-            boolean propertyHolds = property.test( randomInput );
+            
+            boolean propertyHolds;
+            try {
+                propertyHolds = property.test( randomInput );
+            } catch ( Exception e ) {
+                throw new PropertyViolatedException( randomInput, e );
+            }
             if ( !propertyHolds ) throw new PropertyViolatedException( randomInput );
         }
     }
