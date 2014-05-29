@@ -26,5 +26,4 @@ public class PropTest {
     public static final InputGenerator<Integer> INTEGERS = r -> r.nextInt();
     public static final InputGenerator<Long> LONGS = r -> r.nextLong();
     public static final InputGenerator<Double> DOUBLES = r -> r.nextDouble();
-
 }
