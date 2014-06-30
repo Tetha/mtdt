@@ -33,5 +33,5 @@
         </plugin>
     </plugins>
   </build>
-  <artifactId>multiple-thread-disorder-test</artifactId>
+  <artifactId>multiple-thread-disorder-testing</artifactId>
 </project>
