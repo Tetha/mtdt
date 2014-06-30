@@ -1,6 +1,7 @@
 package org.proptest.generators;
 
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 @FunctionalInterface
@@ -43,6 +44,13 @@ public interface InputGenerator<T> {
                 if ( predicate.test( potentialOutput ) ) return potentialOutput;
             }
             throw new FilterTooStrictException( maxTries );
+        };
+    }
+
+    default <R> InputGenerator<R> forEach( Function<T, R> f ) {
+        return r -> {
+            T output = generateRandomInput( r );
+            return f.apply( output );
         };
     }
 }
