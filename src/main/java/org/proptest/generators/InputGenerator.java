@@ -1,5 +1,7 @@
 package org.proptest.generators;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -7,7 +9,7 @@ import java.util.function.Predicate;
 @FunctionalInterface
 public interface InputGenerator<T> {
     T generateRandomInput( Random r );
-    
+
     /**
      * Tries to get an input from the generator which fulfills the predicate, but at most 100 tries.
      * 
@@ -19,7 +21,7 @@ public interface InputGenerator<T> {
     default InputGenerator<T> butOnly( Predicate<T> predicate ) {
         return butOnly( predicate, 100 );
     }
-    
+
     /**
      * Tries to get an input from the generator which fulfills the predicate, but at most maxTries.
      * 
@@ -51,6 +53,17 @@ public interface InputGenerator<T> {
         return r -> {
             T output = generateRandomInput( r );
             return f.apply( output );
+        };
+    }
+
+    default InputGenerator<List<T>> repeat( int min, int max ) {
+        return r -> {
+            int length = r.nextInt( max - min ) + min;
+            List<T> result = new ArrayList<>(length);
+            for ( int i = 0; i < length; i++ ) {
+                result.add( generateRandomInput(r) );
+            }
+            return result;
         };
     }
 }
