@@ -32,8 +32,6 @@ package org.subquark.mtdt.generators;
  * 1 element per thousand, finding this element will take a
  * long time. Thus, after some amount of retries, this
  * exception is raised.
- *
- * @author hkraemer
  */
 public class FilterTooStrictException extends RuntimeException {
     public FilterTooStrictException( int numTries ) {
