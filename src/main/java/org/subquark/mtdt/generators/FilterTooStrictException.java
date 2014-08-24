@@ -17,8 +17,24 @@
  * along with MTDT.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proptest.generators;
+package org.subquark.mtdt.generators;
 
+/**
+ * Thrown if the system can't find an input after a number of tries.
+ *
+ * MTDT can create new filters by filtering existing generators 
+ * down to a desired subset. However, MTDT doesn't know anthing
+ * about the generators, so MTDT has to generate an element,
+ * check if the predicate likes it and start over if it doesn't.
+ * <p>
+ * This works fine for permissive predicates, which accept
+ * every other element on average, but if your predicate allows
+ * 1 element per thousand, finding this element will take a
+ * long time. Thus, after some amount of retries, this
+ * exception is raised.
+ *
+ * @author hkraemer
+ */
 public class FilterTooStrictException extends RuntimeException {
     public FilterTooStrictException( int numTries ) {
         super( "Couldn't find a suitable input after " + numTries + " tries. Your filters are probably too strict - write your own generator." );
