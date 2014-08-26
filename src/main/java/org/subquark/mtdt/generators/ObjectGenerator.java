@@ -37,10 +37,10 @@ public final class ObjectGenerator {
 
     @FunctionalInterface
     public interface PentaryConstructor<A,B,C,D,E,T> {
-        T create(A a, B b, C c);
+        T create(A a, B b, C c, D d, E e);
     }
     
-    public static <A,B,C,D,E,T> InputGenerator<T> randomInstances( final QuartaryConstructor<A,B,C,D,E,T> factory,
+    public static <A,B,C,D,E,T> InputGenerator<T> randomInstances( final PentaryConstructor<A,B,C,D,E,T> factory,
                                                         final InputGenerator<A> aGen,
                                                         final InputGenerator<B> bGen,
                                                         final InputGenerator<C> cGen,
@@ -58,7 +58,7 @@ public final class ObjectGenerator {
 
     @FunctionalInterface
     public interface QuartaryConstructor<A,B,C,D,T> {
-        T create(A a, B b, C c);
+        T create(A a, B b, C c, D d);
     }
 
     public static <A,B,C,D,T> InputGenerator<T> randomInstances( final QuartaryConstructor<A,B,C,D,T> factory,

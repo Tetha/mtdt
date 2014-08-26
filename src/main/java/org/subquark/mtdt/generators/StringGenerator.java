@@ -17,7 +17,7 @@
  * along with MTDT.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proptest.generators;
+package org.subquark.mtdt.generators;
 
 import java.util.List;
 import java.util.Arrays;

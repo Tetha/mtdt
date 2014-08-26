@@ -21,7 +21,7 @@ package org.subquark.mtdt;;
 
 import org.junit.Test;
 
-public class PropTestTest {
+public class MtdtTest {
     @Test( expected = PropertyViolatedException.class )
     public void testPropertyViolation() {
         Mtdt.checkProperty(r -> r.nextInt(), i -> false);
