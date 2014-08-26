@@ -17,20 +17,21 @@
  * along with MTDT.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proptest;
+package org.subquark.mtdt.generators;
 
 import org.junit.Test;
+import org.subquark.mtdt.Mtdt;
 
-public class PropTestTest {
-    @Test( expected = PropertyViolatedException.class )
-    public void testPropertyViolation() {
-        PropTest.checkProperty(r -> r.nextInt(), i -> false);
+public class GeneratorFilteringTest {
+    @Test
+    public void testFiltering() {
+        Mtdt.checkProperty(PrimitiveGenerators.INTEGERS.butOnly( i -> i % 2 == 0), 
+                           i -> i % 2 == 0);
     }
     
-
-    
-    @Test( expected=PropertyViolatedException.class )
-    public void testExceptionsAreAnnotatedWithInput() {
-        PropTest.checkProperty(r -> r.nextInt(), i -> { throw new NullPointerException(); });
+    @Test( timeout = 200, expected = FilterTooStrictException.class )
+    public void testTooStrictFiltering() {
+        Mtdt.checkProperty(PrimitiveGenerators.INTEGERS.butOnly( i -> i == Integer.MAX_VALUE-1),
+                           i -> true);
     }
 }
