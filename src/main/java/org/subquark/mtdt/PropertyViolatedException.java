@@ -17,7 +17,7 @@
  * along with MTDT.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proptest;
+package org.subquark.mtdt;
 
 public class PropertyViolatedException extends RuntimeException {
     public PropertyViolatedException( Object faultyInput ) {

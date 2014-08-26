@@ -17,9 +17,12 @@
  * along with MTDT.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proptest.generators;
+package org.subquark.mtdt.generators;
 
 public class UniformCombinator {
+    /**
+     * This generator uniformly chooses one sub-generator to generate from.
+     */
     @SafeVarargs
     public static <T> InputGenerator<T> uniform( InputGenerator<T>... children ) {
         return r -> {

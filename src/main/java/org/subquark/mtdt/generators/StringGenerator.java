@@ -23,6 +23,14 @@ import java.util.List;
 import java.util.Arrays;
 
 public class StringGenerator {
+    /**
+     * This class generates alphanumeric strings of exactly length characters.
+     *
+     * Use this if you just need some strings which
+     * can be kinda humanly recognized. Also
+     * use this if you want to have a good laugh
+     * about the "mostlyReadable". 
+     */
     public static InputGenerator<String> mostlyReadableStrings( int length ) {
         return r -> {
             StringBuilder result = new StringBuilder();

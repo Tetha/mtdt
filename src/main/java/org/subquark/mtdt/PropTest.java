@@ -17,17 +17,24 @@
  * along with MTDT.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proptest;
+package org.subquark.mtdt;
 
 import java.util.Random;
 import java.util.function.Predicate;
 
-import org.proptest.generators.InputGenerator;
+import org.subquark.mtdt.generators.InputGenerator;
 
-public class PropTest {
+public class Mtdt {
     private static Random r = new Random();
     private static int MAX_TRIES = 100;
     
+    /**
+     * This checks if the property holds for generated examples.
+     *
+     * By default, this class generates at most 100 examples
+     * to try, if that many examples work, the test probably 
+     * works.
+     */
     public static <T> void checkProperty( InputGenerator<T> exampleGenerator, Predicate<T> property ) {
         for ( int i = 0; i < MAX_TRIES; i++ ) {
             T randomInput = exampleGenerator.generateRandomInput( r );
@@ -41,8 +48,4 @@ public class PropTest {
             if ( !propertyHolds ) throw new PropertyViolatedException( randomInput );
         }
     }
-    
-    public static final InputGenerator<Integer> INTEGERS = Random::nextInt;
-    public static final InputGenerator<Long> LONGS = Random::nextLong;
-    public static final InputGenerator<Double> DOUBLES = Random::nextDouble;
 }
