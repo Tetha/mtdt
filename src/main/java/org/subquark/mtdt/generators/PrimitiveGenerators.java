@@ -18,15 +18,12 @@
  *
  */
 
-package org.proptest.generators;
+package org.subquark.mtdt.generators;
 
 import java.util.Random;
 
 /**
  * The input generators in this class provide uniformly distributed values of their respective type.
- * 
- * @author hkraemer
- *
  */
 public class PrimitiveGenerators {
     public static final InputGenerator<Byte> BYTES = r -> {
