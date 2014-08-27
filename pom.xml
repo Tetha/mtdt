@@ -2,12 +2,21 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>multiple-thread-disorder-testing</name>
-    <url>http://maven.apache.org</url>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description> This library enables developers to create
+        powerful, random input generators for both complex 
+        test subjects, and multi threaded tests. </description>
+    <url>https://github.com/Tetha/mtdt</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:Tetha/mtdt.git</connection>
+        <developerConnection>scm:git:git@github.com:Tetha/mtdt.git</developerConnection>
+        <url>git@github.com:Tetha/mtdt.git</url>
+    </scm>
 
     <groupId>org.subquark</groupId>
     <artifactId>mtdt</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
