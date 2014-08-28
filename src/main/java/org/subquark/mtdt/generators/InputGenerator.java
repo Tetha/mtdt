@@ -33,7 +33,7 @@ public interface InputGenerator<T> {
     /**
      * Tries to get an input from the generator which fulfills the predicate, but at most 100 tries.
      * 
-     * This merely invokes {@link InputGenerator.butOnly} with a default value for maxTries.
+     * This merely invokes <code>butOnly</code> with a default value for maxTries.
      * 
      * @param predicate only inputs fulfilling this predicate are returned
      * @return an input generator which only returns outputs which fulfill the predicate
